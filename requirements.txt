@@ -1,0 +1,14 @@
+git+https://rithvik1:ATBB3acTReFuFZCbJDFfGr7s4zcQ3A675E31@bitbucket.org/wegrow-analytics/poseidons_tools.git
+polars==0.19.16
+requests
+metabasepy
+python-dateutil
+Pillow
+pandas
+numpy
+pyarrow
+wordcloud==1.9.3
+plotly
+psycopg2
+python-dotenv
+streamlit
