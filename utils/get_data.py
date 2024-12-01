@@ -1,6 +1,9 @@
 import poseidons_tools as pt
 import pandas as pd
 import streamlit as st 
+from poseidons_tools import get_platforms
+
+pfs = get_platforms()
 
 @st.cache_resource(show_spinner="Connecting to Metabase...")
 def connect_to_metabase() -> pt.MetabaseConnection:
