@@ -1,10 +1,12 @@
 import pandas as pd
 import polars as pl
 import sys
-sys.path.append('/Users/rithvikrawat/Downloads/wegrow/Userhub/UserHUB')
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from utils.get_data import connect_to_metabase, get_sql_query, get_user_data_from_metabase, pfs
 
-user_path = "/Users/rithvikrawat/Downloads/wegrow/Userhub/UserHUB/data/sql/active_users_info.sql"
+user_path = "data/sql/active_users_info.sql"
 connection = connect_to_metabase()
 query = get_sql_query(user_path)
 df = get_user_data_from_metabase(connection, pfs, query)
