@@ -2,3 +2,4 @@
 *.pyc
 secrets.toml
 .env
+.DS_Store
