@@ -1,51 +1,29 @@
 import pandas as pd
-import polars as pl
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from model.pipeline import prediction_pipeline
 
-from utils.get_data import connect_to_metabase, get_sql_query, get_user_data_from_metabase, pfs
+pred_df, df = prediction_pipeline()
 
-user_path = "data/sql/active_users_info.sql"
-connection = connect_to_metabase()
-query = get_sql_query(user_path)
-df = get_user_data_from_metabase(connection, pfs, query)
-columns_to_check = ['userid', 'platform', 'email', 'firstname']
+df_pred = df[df["days_since_last_login"] < 90]
+df_pred = df_pred.merge(pred_df, how="left", on=["userid", "platform"])
 
-def process_data(df: pd.DataFrame) -> pd.DataFrame:
-    df['uid'] = df['userid'].astype(str) + df['platform'].str.lower()
-    df_cleaned = df.dropna(subset=columns_to_check)
+df_pred['Churn%'] = df_pred['Churn'].apply(lambda x: round(x * 100, 2) if pd.notna(x) else None)
 
-    df = df_cleaned[(df_cleaned[columns_to_check] != '').all(axis=1)]
-    for col in df.columns:
-            if col not in columns_to_check:  # Skip the columns_to_check
-                if pd.api.types.is_numeric_dtype(df_cleaned[col]):
-                    df[col] = df[col].fillna(0)  # Replace nulls with 0 for numeric columns
-                else:
-                    df[col] = df[col].fillna('unspecified')
+df = df.merge(df_pred[['userid', 'platform', 'Churn%']], on=['userid', 'platform'], how='left')
 
-    mask = df['firstname'].str.contains(r'\.', na=False)
+order = [
+    'name', 'userid', 'platform', 'Churn%', 'days_since_last_login', 'age_on_platform', 
+    'total_login_count', 'country', 'department', 'emailfreq', 'level', 
+    'last_login', 'firstname', 'lastname', 'email'
+]
 
+for column in order:
+    if column not in df.columns:
+        df[column] = None
+    if column not in df_pred.columns:
+        df_pred[column] = None
 
-        # Split 'firstname' at the first dot into two parts
-    split_names = df.loc[mask, 'firstname'].str.split('.', n=1, expand=True)
+df = df[order]
+df_pred = df_pred[order]
 
-        # Update 'firstname' and 'lastname' columns based on the split
-    df.loc[mask, 'firstname'] = split_names[0]
-    df.loc[mask, 'lastname'] = split_names[1]
-
-        # Step 2: Merge 'firstname' and 'lastname' into 'name' if 'lastname' is not null or empty
-        # Create a mask for rows where 'lastname' is not null or empty
-    lastname_mask = df['lastname'].notna() & df['lastname'].ne('')
-
-        # Initialize 'name' with 'firstname'
-    df['name'] = df['firstname']
-
-        # Update 'name' by concatenating 'firstname' and 'lastname' where applicable
-    df.loc[lastname_mask, 'name'] = df.loc[lastname_mask, 'firstname'] + ' ' + df.loc[lastname_mask, 'lastname']
-    
-    return df
-
-df_processed = process_data(df)
-
-print(df_processed)
+df = df[~df['email'].str.contains("@wegrow-app.com", na=False)]
+df_pred = df_pred[~df_pred['email'].str.contains("@wegrow-app.com", na=False)]

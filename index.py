@@ -1,77 +1,66 @@
-from data.processing import df_processed
+from data.processing import df, df_pred
 import streamlit as st
 
 def app():
-    l1, c1, r1 = st.columns([1, 2, 1])
-    with c1:
-        st.title('User Directory 📖')
+    global df, df_pred
 
-    # Filters as a top bar in the main area
-    col1, col2, col3, col4 = st.columns(4)
+    st.markdown("""
+                    # UserHUB 👤
+                    ## Access User Info ⚡️
+                    ---
+                    """)
+
+    search_input = st.sidebar.text_input('Search User by ID, Name, Email', '')
+    status = st.sidebar.selectbox("User Status", ['All', 'Active', 'Inactive'])
+
+    if status == 'All':
+        df_processed = df
+    elif status == 'Active':
+        df_processed = df_pred
+        churn_slider = st.sidebar.slider('Filter by Churn Percentage', 0, 100, (0, 100))
+        df_processed = df_processed[(df_processed['Churn%'] >= churn_slider[0]) & (df_processed['Churn%'] <= churn_slider[1])]
+    else:
+        df_processed = df[~df.set_index(['userid', 'platform']).index.isin(df_pred.set_index(['userid', 'platform']).index)]
+
+    # Select filters for platform, region, department, level
     platform_counts = df_processed['platform'].value_counts().sort_values(ascending=False)
-    platforms = ['All'] + platform_counts.index.tolist()
-    selected_platform = col1.selectbox("Platform", platforms)
-
     region_counts = df_processed['country'].value_counts().sort_values(ascending=False)
-    regions = ['All'] + region_counts.index.tolist()
-    selected_region = col2.selectbox("Region", regions)
-
     department_counts = df_processed['department'].value_counts().sort_values(ascending=False)
-    departments = ['All'] + department_counts.index.tolist()
-    selected_department = col3.selectbox("Department", departments)
+    level_counts = df_processed['level'].value_counts().sort_values(ascending=False)
 
-    levels = ['All'] + df_processed['level'].unique().tolist()
-    selected_level = col4.selectbox("Level", levels)
+    selected_platform = st.sidebar.selectbox("Platform", ['All'] + list(platform_counts.index))
+    selected_region = st.sidebar.selectbox("Region", ['All'] + list(region_counts.index))
+    selected_department = st.sidebar.selectbox("Department", ['All'] + list(department_counts.index))
+    selected_level = st.sidebar.selectbox("Level", ['All'] + list(level_counts.index))
 
-    s1, s2 =st.columns([1,5])
-    with s1:
-        st.write("Search for a User 🔍")
-    with s2:
-        user_query = st.text_input("Enter User-id, Email, or Name of a User:", "")
-
-    # Applying filters
-    df = df_processed.copy()
+    # Apply filters
     if selected_platform != 'All':
-        df = df[df['platform'] == selected_platform]
+        df_processed = df_processed[df_processed['platform'] == selected_platform]
     if selected_region != 'All':
-        df = df[df['country'] == selected_region]
+        df_processed = df_processed[df_processed['country'] == selected_region]
     if selected_department != 'All':
-        df = df[df['department'] == selected_department]
+        df_processed = df_processed[df_processed['department'] == selected_department]
     if selected_level != 'All':
-        df = df[df['level'] == selected_level]
+        df_processed = df_processed[df_processed['level'] == selected_level]
 
-    # Apply search filter based on input type
-    if user_query:
-        if user_query.isdigit():  # Assuming user_id is numeric
-            user_query_number = int(user_query)
-            # Ensure 'userid' in DataFrame is also treated as integers, then perform the comparison
-            df = df[df['userid'].astype(int) == user_query_number]
-        elif '@' in user_query:
-            df = df[df['email'].str.contains(user_query, case=False, na=False)]
-        else:
-            df = df[df['name'].str.contains(user_query, case=False, na=False)]
+    # Update and display KPIs after filtering
+    total_users = len(df_processed)
+    active_users = len(df_processed[df_processed['Churn%'] <= 25])  # Active user definition might need adjustment
+    high_risk_users = df_processed[df_processed['Churn%'] > 75].shape[0]
 
-    # Show search results in an expander
-    if not df.empty:
-        with st.expander("Search Results"):
-            df_display = df[['userid', 'platform', 'name', 'email']].reset_index(drop=True)
-            st.dataframe(df_display, use_container_width=True)
+    st.sidebar.markdown('---')
+    st.sidebar.markdown("""
+                ## Key Performance Indicators 📊
+                """)
+    st.sidebar.markdown(f"Total WeGrow Users 📚: `{total_users}`")
+    if total_users > 0:
+        active_ratio = active_users / total_users * 100
+        st.sidebar.markdown(f"Total Active WeGrow Users 🌟: `{active_users}` ({active_ratio:.2f}%)")
+    st.sidebar.markdown(f"High Risk Users ⚠️: `{high_risk_users}`")
     
-    l2, c2, r2 = st.columns([1, 1, 1])
-
-    # Popover for Most Engaged Users
-    with l2:
-        most_engaged = st.expander("Most Engaged Users")
-        most_engaged.write("Details will be added here...")  # Placeholder text
-
-    # Popover for Least Engaged Users
-    with c2:
-        least_engaged = st.expander("Least Engaged Users")
-        least_engaged.write("Details will be added here...")  # Placeholder text
-
-    # Popover for Inactive Users
-    with r2:
-        inactive_users = st.expander("Inactive Users")
-        inactive_users.write("Details will be added here...") 
+    if search_input:
+        df_processed = df_processed[df_processed.apply(lambda row: row[['firstname', 'lastname', 'name', 'email']].astype(str).str.contains(search_input, case=False, na=False).any(), axis=1)]
+   
+    st.dataframe(df_processed, height=600)
         
             
