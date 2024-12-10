@@ -10,7 +10,7 @@ def app():
                     ---
                     """)
 
-    search_input = st.sidebar.text_input('Search User by ID, Name, Email', '')
+    search_input = st.sidebar.text_input('Search User by ID, Name, Email 🔎', '')
     status = st.sidebar.selectbox("User Status", ['All', 'Active', 'Inactive'])
 
     if status == 'All':
