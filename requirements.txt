@@ -14,3 +14,4 @@ sqlalchemy
 scikit-learn
 pandera
 streamlit-authenticator
+poseidons_tools
