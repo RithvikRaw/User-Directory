@@ -8,8 +8,10 @@ def app():
     
     data = df.copy()
     data['last_login'] = pd.to_datetime(data['last_login']).dt.date
+    data['last_interaction_date'] = pd.to_datetime(data['last_interaction_date']).dt.date
     active_data = df_pred.copy()
     active_data['last_login'] = pd.to_datetime(active_data['last_login']).dt.date
+    active_data['last_interaction_date'] = pd.to_datetime(active_data['last_interaction_date']).dt.date
     
     colA, colB, colC = st.columns(3)
     colA.markdown("""
