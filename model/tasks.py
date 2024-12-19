@@ -1,7 +1,5 @@
 import sys
 import os
-import poseidons_tools as pt
-import numpy as np
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
@@ -13,7 +11,7 @@ import glob
 from datetime import datetime
 pd.options.mode.chained_assignment = None
 
-from utils.get_data import connect_to_metabase, get_sql_query, get_user_data_from_metabase
+from utils.get_data import connect_to_metabase, get_sql_query, get_user_data_from_metabase, pfs
 
 def initialise_pipeline(context: dict):
     context["id"] = datetime.now().strftime("%d%m%Y%H%M%S")
@@ -42,7 +40,7 @@ def get_training_data(context: dict) -> pd.DataFrame:
     print("Task: Getting Data")
 
     user_path = "data/sql/training_query.sql"
-    df = get_data(user_path, pt.get_platforms())
+    df = get_data(user_path, pfs)
 
     context["data"] = df
 
@@ -53,7 +51,7 @@ def get_prediction_data(context: dict) -> pd.DataFrame:
     print("Task: Getting Data")
 
     user_path = "data/sql/user_query.sql"
-    df1 = get_data(user_path, pt.get_platforms())
+    df1 = get_data(user_path, pfs)
     df = df1[df1["days_since_last_login"]<90]
     
     context["prediction_data"] = df

@@ -12,24 +12,25 @@ st.set_page_config(
 
 from index import app
 
-import bcrypt
+import hmac
 
-hashed_password = b'$2b$12$w9SLU1Nud2.us8w8JtOBqOOCfHz3fOXmSHkuiUNShOYoCntHqtXQi'
+def check_password():  
+    def password_entered():  
+        if hmac.compare_digest(st.session_state["password"], st.secrets["app_password"]):  
+            st.session_state["password_correct"] = True  
+            del st.session_state["password"]
+        else:  
+            st.session_state["password_correct"] = False  
+    if st.session_state.get("password_correct", False):  
+        return True  
+    st.text_input(  
+        "Password", type="password", on_change=password_entered, key="password"  
+    )  
+    if "password_correct" in st.session_state:  
+        st.error("😕 Password incorrect")  
+    return False
 
-if 'authenticated' not in st.session_state:
-    st.session_state['authenticated'] = False
-
-def check_password(hashed_password, user_password):
-    if bcrypt.checkpw(user_password.encode('utf-8'), hashed_password):
-        st.session_state['authenticated'] = True
-    else:
-        st.session_state['authenticated'] = False
-        st.error("Incorrect password, try again!")
-
-if not st.session_state['authenticated']:
-    password_input = st.text_input("Password", type="password", key='password')
-    if password_input:
-        check_password(hashed_password, password_input)
-
-if st.session_state['authenticated']:
-    app()
+if not check_password():  
+    st.stop()
+    
+app()

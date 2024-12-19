@@ -1,5 +1,4 @@
 import poseidons_tools as pt
-import pandas as pd
 import streamlit as st 
 from poseidons_tools import get_platforms
 

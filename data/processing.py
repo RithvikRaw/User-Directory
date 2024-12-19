@@ -12,8 +12,8 @@ df = df.merge(df_pred[['userid', 'platform', 'Churn%']], on=['userid', 'platform
 
 order = [
     'name', 'userid', 'platform', 'Churn%', 'days_since_last_login', 'age_on_platform', 
-    'total_login_count', 'country', 'department', 'emailfreq', 'level', 
-    'last_login', 'firstname', 'lastname', 'email'
+    'total_login_count', 'last_action', 'last_interaction_date', 'last_interaction_postid', 'country', 'department', 'emailfreq', 'level', 
+    'last_login', 'email'
 ]
 
 for column in order:
