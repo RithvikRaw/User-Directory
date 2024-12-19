@@ -1,1 +1,0 @@
-SELECT feature_flipping FROM config_client
