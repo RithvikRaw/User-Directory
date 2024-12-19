@@ -1,0 +1,554 @@
+{
+    "Wegrow": {
+        "metabase_id": 219,
+        "azure_db": null,
+        "url": "https://app.wegrow-app.com/",
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": true
+    },
+    "Interne": {
+        "metabase_id": 165,
+        "azure_db": "interne",
+        "url": null,
+        "use_case": null,
+        "active": true,
+        "internal": true
+    },
+    "Demo 1": {
+        "metabase_id": 164,
+        "azure_db": "demo1",
+        "url": "https://demo1.wegrow-app.com/",
+        "use_case": "E-commerce",
+        "active": true,
+        "internal": true
+    },
+    "Demo 2": {
+        "metabase_id": 162,
+        "azure_db": "demo2",
+        "url": "https://demo2.wegrow-app.com/",
+        "use_case": "Marketing",
+        "active": true,
+        "internal": true
+    },
+    "Demo 3": {
+        "metabase_id": 163,
+        "azure_db": null,
+        "url": "https://demo3.wegrow-app.com/",
+        "use_case": "Sales",
+        "active": true,
+        "internal": true
+    },
+    "Demo 4": {
+        "metabase_id": 160,
+        "azure_db": null,
+        "url": "https://demo4.wegrow-app.com/",
+        "use_case": null,
+        "active": true,
+        "internal": true
+    },
+    "Demo 5": {
+        "metabase_id": 161,
+        "azure_db": null,
+        "url": "https://demo5.wegrow-app.com/",
+        "use_case": null,
+        "active": true,
+        "internal": true
+    },
+    "Mktg": {
+        "metabase_id": 166,
+        "azure_db": null,
+        "url": "https://mktg.wegrow-app.com/",
+        "use_case": null,
+        "active": true,
+        "internal": true
+    },
+    "Cora": {
+        "metabase_id": null,
+        "azure_db": "cora",
+        "url": "https://cora.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "Operations",
+        "active": false,
+        "internal": false,
+        "csm": ["Michaël"]
+    },
+    "Campari": {
+        "metabase_id": 171,
+        "azure_db": "campari",
+        "url": "https://campari.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Miruna", "Maria"]
+    },
+    "Barilla": {
+        "metabase_id": 175,
+        "azure_db": "barilla",
+        "url": "https://barilla.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Sofia"]
+    },
+    "Suntory Caribbean": {
+        "metabase_id": 192,
+        "azure_db": "suntory-carribean",
+        "url": "None",
+        "email_exception": [],
+        "use_case": "Sales",
+        "active": true,
+        "internal": false,
+        "csm": ["Miruna"]
+    },
+    "Henkel ACB": {
+        "metabase_id": 214,
+        "azure_db": "henkel-acb",
+        "url": "https://henkel-acb.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": false,
+        "internal": false
+    },
+    "Mondelez": {
+        "metabase_id": 205,
+        "azure_db": "mondelez",
+        "url": "https://mondelez.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "Awards",
+        "active": true,
+        "internal": false,
+        "csm": ["Sofia"]
+    },
+    "Campari SEMEA": {
+        "metabase_id": 183,
+        "azure_db": "campari-semea",
+        "url": "https://campari-semea.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Miruna", "Maria"]
+    },
+    "KHNE": {
+        "metabase_id": 203,
+        "azure_db": "kraftheinz-ne",
+        "url": "https://kraftheinz-ne.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": false,
+        "internal": false
+    },
+    "Suntory Beam": {
+        "metabase_id": 200,
+        "azure_db": "beamsuntorygemba",
+        "url": "https://beamsuntorygemba.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Miruna"]
+    },
+    "Henkel ACC": {
+        "metabase_id": 211,
+        "azure_db": "henkel-acc",
+        "url": "https://henkel-acc.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Marine"]
+    },
+    "Nestle": {
+        "metabase_id": 195,
+        "azure_db": "nestle-sales",
+        "url": "https://nestle-sales.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Alberta"]
+    },
+    "Circet": {
+        "metabase_id": 184,
+        "azure_db": "circet",
+        "url": "https://circet.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "Operations",
+        "active": true,
+        "internal": false,
+        "csm": ["Michaël"]
+    },
+    "Henkel ACC NA": {
+        "metabase_id": 170,
+        "azure_db": "henkel-acc-na",
+        "url": "https://henkel-acc-na.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "Sales",
+        "active": true,
+        "internal": false,
+        "csm": ["Marine"]
+    },
+    "Unilever Icecream": {
+        "metabase_id": 208,
+        "azure_db": "unilever-icecream",
+        "url": "https://unilever-icecream.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Alberta"]
+    },
+    "Unilever Nutrition": {
+        "metabase_id": 198,
+        "azure_db": "unilever-nutrition",
+        "url": "https://unilever-nutrition.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": false,
+        "internal": false
+    },
+    "Unilever Ecommerce": {
+        "metabase_id": 196,
+        "azure_db": "unilever-ecommerce",
+        "url": "https://unilever-ecommerce.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": false,
+        "internal": false
+    },
+    "PUIG": {
+        "metabase_id": 216,
+        "azure_db": "puig",
+        "url": "https://puig.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Alberta"]
+    },
+    "Suntory DC": {
+        "metabase_id": 180,
+        "azure_db": "suntory-dc",
+        "url": "https://suntory-dc.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Miruna"]
+    },
+    "Logitech": {
+        "metabase_id": 207,
+        "azure_db": "logitech",
+        "url": "https://logitech.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Gülistan"]
+    },
+    "Coca-Cola": {
+        "metabase_id": 221,
+        "azure_db": "coca-cola",
+        "url": "https://coca-cola.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Miruna"]
+    },
+    "Reckitt": {
+        "metabase_id": 189,
+        "azure_db": "reckitt",
+        "url": "https://weshareit.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Marine"]
+    },
+    "Henkel AMI": {
+        "metabase_id": 204,
+        "azure_db": "henkel-aei",
+        "url": "https://henkel-ami.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Marine"]
+    },
+    "Suntory DEI": {
+        "metabase_id": 177,
+        "azure_db": "suntory-dai",
+        "url": "https://suntorydei.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Miruna"]
+    },
+    "Unilever Lux": {
+        "metabase_id": 194,
+        "azure_db": "unilever-lux",
+        "url": "https://unilever-lux.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Sofia", "Linh"]
+    },
+    "Coca E@S": {
+        "metabase_id": 191,
+        "azure_db": "experiment-at-scale",
+        "url": "https://experimentation-at-scale.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Miruna"]
+    },
+    "HP": {
+        "metabase_id": 197,
+        "azure_db": "hp",
+        "url": "https://hp.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Sofia", "Linh"]
+    },
+    "Kraft Heinz": {
+        "metabase_id": 187,
+        "azure_db": "kraftheinz",
+        "url": "https://kraftheinz.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Sofia"]
+    },
+    "Organon": {
+        "metabase_id": 218,
+        "azure_db": "apj-award",
+        "url": "https://apjaward.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Sofia", "Linh"]
+    },
+    "Henkel ACM": {
+        "metabase_id": 168,
+        "azure_db": "henkel-acm",
+        "url": "https://henkel-acm.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Marine"]
+    },
+    "Bayer CH": {
+        "metabase_id": 172,
+        "azure_db": "bayer-ch",
+        "url": "https://bayerchsharing.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Miruna"]
+    },
+    "Essity": {
+        "metabase_id": 174,
+        "azure_db": "essity",
+        "url": "https://essity.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Marine"]
+    },
+    "Henkel Ecommerce": {
+        "metabase_id": 167,
+        "azure_db": "henkel-ecom",
+        "url": "https://henkel-ecom.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Marine"]
+    },
+    "Henkel Hair Professional": {
+        "metabase_id": 209,
+        "azure_db": "henkel-professional-growth",
+        "url": "https://henkelprofessionalgrowth.wegrow-app.com/#/auth/sign-in?type=form",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Marine"]
+    },
+    "Bayer Fine": {
+        "metabase_id": 220,
+        "azure_db": "bayerch-cdk",
+        "url": "https://bayer-fine.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Miruna"]
+    },
+    "Rexel": {
+        "metabase_id": 181,
+        "azure_db": "rexel",
+        "url": "https://rexel.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Gülistan"]
+    },
+    "Nestle Confectionary": {
+        "metabase_id": 193,
+        "azure_db": "nestle-confectionary",
+        "url": "https://nestle-confectionary.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Alberta"]
+    },
+    "LVMH": {
+        "metabase_id": 202,
+        "azure_db": "partnershipshub-lvmh",
+        "url": "https://partnershipshub-lvmh.wegrow-app.com",
+        "email_exception": [
+            "lvmh.accelerate@wegrow-app.com"
+        ],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Michaël"]
+    },
+    "Sandoz": {
+        "metabase_id": 213,
+        "azure_db": "sandoz",
+        "url": "https://sandoz.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Miruna"]
+    },
+    "Henkel AOD": {
+        "metabase_id": 185,
+        "azure_db": "henkel-aod",
+        "url": "https://henkel-aod.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Marine"]
+    },
+    "Mars": {
+        "metabase_id": 222,
+        "azure_db": "mars",
+        "url": "https://mars.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": false,
+        "internal": false,
+        "csm": ["Alberta"]
+    },
+    "Michelin": {
+        "metabase_id": 201,
+        "azure_db": "michelin",
+        "url": "https://michelin.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Michaël"]
+    },
+    "Merck": {
+        "metabase_id": 179,
+        "azure_db": "vshare-weareoncology",
+        "url": "https://vshare-weareoncology.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Miruna"]
+    },
+    "Diageo": {
+        "metabase_id": 182,
+        "azure_db": "diageo",
+        "url": "https://diageo-innovation.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Miruna", "Maria"]
+    },
+    "Royal Canin": {
+        "metabase_id": 212,
+        "azure_db": "royalcanin",
+        "url": "https://royalcanin.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Alberta"]
+    },
+    "General Mills": {
+        "metabase_id": 178,
+        "azure_db": "weshare",
+        "url": "https://weshare.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Sofia", "Linh"]
+    },
+    "Sonepar": {
+        "metabase_id": 176,
+        "azure_db": "sonepar-france",
+        "url": "https://sonepar-france.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Michaël"]
+    },
+    "Bayer Nutrition": {
+        "metabase_id": 169,
+        "azure_db": "wecreate",
+        "url": "https://wecreate.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Miruna"]
+    },
+    "Merck Fertility": {
+        "metabase_id": 173,
+        "azure_db": "ferti-connect",
+        "url": "https://ferti-connect.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Miruna"]
+    },
+    "HP Sales": {
+        "metabase_id": 206,
+        "azure_db": "hp-sales",
+        "url": "https://Change-experience-resource-center.wegrow-app.com/",
+        "email_exception": [],
+        "use_case": "BP Scaling",
+        "active": true,
+        "internal": false,
+        "csm": ["Sofia", "Linh"]
+    }
+}
