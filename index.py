@@ -60,30 +60,6 @@ def app():
             else:
                 csm_platforms = csm['Unnamed: 1'].unique()
         
-    # if st.session_state.show_advanced:
-    #     platform_counts = filtered_df['platform'].value_counts().sort_values(ascending=False)
-    #     region_counts = filtered_df['country'].value_counts().sort_values(ascending=False)
-    #     department_counts = filtered_df['department'].value_counts().sort_values(ascending=False)
-    #     level_counts = filtered_df['level'].value_counts().sort_values(ascending=False)
-
-    #     col1, col2, col3, col4 = st.columns(4)
-    #     with col1:
-    #         selected_platforms = st.multiselect("Platform", list(platform_counts.index))
-    #     with col2:
-    #         selected_regions = st.multiselect("Region", list(region_counts.index))
-    #     with col3:
-    #         selected_departments = st.multiselect("Department", list(department_counts.index))
-    #     with col4:
-    #         selected_levels = st.multiselect("Level", list(level_counts.index))
-
-    #     if selected_platforms:
-    #         filtered_df = filtered_df[filtered_df['platform'].isin(selected_platforms)]
-    #     if selected_regions:
-    #         filtered_df = filtered_df[filtered_df['country'].isin(selected_regions)]
-    #     if selected_departments:
-    #         filtered_df = filtered_df[filtered_df['department'].isin(selected_departments)]
-    #     if selected_levels:
-    #         filtered_df = filtered_df[filtered_df['level'].isin(selected_levels)]
     if st.session_state.show_advanced:
         platform_counts = filtered_df['platform'].value_counts().sort_values(ascending=False)
 
