@@ -52,40 +52,76 @@ def app():
     if st.session_state.csm:
         csm_count = csm['Unnamed: 6'].unique()
         with col5:
-            selected_csm = st.multiselect("", ["All"] + list(csm_count), default=['All'])
+            selected_csm = st.multiselect("", list(csm_count))
 
-            if 'All' in selected_csm:
-                csm_platforms = csm['Unnamed: 1'].unique()
-            else:
+            if selected_csm:
                 csm_platforms = csm[csm['Unnamed: 6'].isin(selected_csm)]['Unnamed: 1'].unique()
-
-            if 'All' not in selected_csm:
-                filtered_df = filtered_df[filtered_df['platform'].isin(csm_platforms)]  
+                filtered_df = filtered_df[filtered_df['platform'].isin(csm_platforms)]
+            else:
+                csm_platforms = csm['Unnamed: 1'].unique()
         
+    # if st.session_state.show_advanced:
+    #     platform_counts = filtered_df['platform'].value_counts().sort_values(ascending=False)
+    #     region_counts = filtered_df['country'].value_counts().sort_values(ascending=False)
+    #     department_counts = filtered_df['department'].value_counts().sort_values(ascending=False)
+    #     level_counts = filtered_df['level'].value_counts().sort_values(ascending=False)
+
+    #     col1, col2, col3, col4 = st.columns(4)
+    #     with col1:
+    #         selected_platforms = st.multiselect("Platform", list(platform_counts.index))
+    #     with col2:
+    #         selected_regions = st.multiselect("Region", list(region_counts.index))
+    #     with col3:
+    #         selected_departments = st.multiselect("Department", list(department_counts.index))
+    #     with col4:
+    #         selected_levels = st.multiselect("Level", list(level_counts.index))
+
+    #     if selected_platforms:
+    #         filtered_df = filtered_df[filtered_df['platform'].isin(selected_platforms)]
+    #     if selected_regions:
+    #         filtered_df = filtered_df[filtered_df['country'].isin(selected_regions)]
+    #     if selected_departments:
+    #         filtered_df = filtered_df[filtered_df['department'].isin(selected_departments)]
+    #     if selected_levels:
+    #         filtered_df = filtered_df[filtered_df['level'].isin(selected_levels)]
     if st.session_state.show_advanced:
         platform_counts = filtered_df['platform'].value_counts().sort_values(ascending=False)
-        region_counts = filtered_df['country'].value_counts().sort_values(ascending=False)
-        department_counts = filtered_df['department'].value_counts().sort_values(ascending=False)
-        level_counts = filtered_df['level'].value_counts().sort_values(ascending=False)
 
         col1, col2, col3, col4 = st.columns(4)
-        with col1:
-            selected_platforms = st.multiselect("Platform", ['All'] + list(platform_counts.index), default=['All'])
-        with col2:
-            selected_regions = st.multiselect("Region", ['All'] + list(region_counts.index), default=['All'])
-        with col3:
-            selected_departments = st.multiselect("Department", ['All'] + list(department_counts.index), default=['All'])
-        with col4:
-            selected_levels = st.multiselect("Level", ['All'] + list(level_counts.index), default=['All'])
 
-        if 'All' not in selected_platforms:
-            filtered_df = filtered_df[filtered_df['platform'].isin(selected_platforms)]
-        if 'All' not in selected_regions:
-            filtered_df = filtered_df[filtered_df['country'].isin(selected_regions)]
-        if 'All' not in selected_departments:
-            filtered_df = filtered_df[filtered_df['department'].isin(selected_departments)]
-        if 'All' not in selected_levels:
-            filtered_df = filtered_df[filtered_df['level'].isin(selected_levels)]
+        with col1:
+            selected_platforms = st.multiselect("Platform", list(platform_counts.index))
+            if selected_platforms:
+                filtered_df = filtered_df[filtered_df['platform'].isin(selected_platforms)]
+            else:
+                filtered_df = filtered_df
+
+        region_counts = filtered_df['country'].value_counts().sort_values(ascending=False)
+        with col2:
+            if not region_counts.empty:
+                selected_regions = st.multiselect("Region", list(region_counts.index))
+                if selected_regions:
+                    filtered_df = filtered_df[filtered_df['country'].isin(selected_regions)]
+            else:
+                selected_regions = st.multiselect("Region", [])
+
+        department_counts = filtered_df['department'].value_counts().sort_values(ascending=False)
+        with col3:
+            if not department_counts.empty:
+                selected_departments = st.multiselect("Department", list(department_counts.index))
+                if selected_departments:
+                    filtered_df = filtered_df[filtered_df['department'].isin(selected_departments)]
+            else:
+                selected_departments = st.multiselect("Department", [])
+
+        level_counts = filtered_df['level'].value_counts().sort_values(ascending=False)
+        with col4:
+            if not level_counts.empty:
+                selected_levels = st.multiselect("Level", list(level_counts.index))
+                if selected_levels:
+                    filtered_df = filtered_df[filtered_df['level'].isin(selected_levels)]
+            else:
+                selected_levels = st.multiselect("Level", [])
             
     active_users = len(filtered_df[filtered_df["Churn%"].notnull()])
     high_risk_users = len(filtered_df[filtered_df['Churn%'] > 75])
